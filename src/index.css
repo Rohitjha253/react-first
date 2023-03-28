@@ -11,3 +11,76 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.btn {
+  background-color: #333;
+  color:#fff;
+  padding:10px 15px;
+  border: none;
+  
+}
+.button:hover {
+  background-color:red;
+
+}
+
+
+.container {
+  width: 80%;
+  margin: auto;
+  border: 2px solid black;
+  height: 300px;
+  padding: 50px;
+}
+
+.box1{
+  border: 2px solid black;
+  margin:10px;
+}
+
+.box2{
+  border: 2px solid black;
+  margin:10px;
+}
+
+.box1 a{
+  display: block;
+  padding: 5px;
+  
+
+}
+
+.box2 a{
+  display: block;
+  padding: 5px;
+}
+
+.contain{
+  display: flex;
+}
+
+.last{
+  text-align: center;
+}
+
+footer{
+  border: 5px solid red;
+  position: relative;
+  top:500px;
+}
+
+.box3{
+  padding: 10px;
+  border: 2px solid black;
+  margin: 10px;
+  position: relative;
+  left:550px;
+}
