@@ -2,11 +2,14 @@
 import React from 'react'
 import { useState } from "react"
 import './App.css';
+import AddTask from './components/AddTask';
 import Header from './components/Header';
 import Tasks from './components/Tasks';
 
 
 function App() {
+
+  const [showAddTask, setshowAddTask] = useState(false)
   const [tasks, setTasks] = useState([
 
     {
@@ -43,13 +46,29 @@ function App() {
       setTasks(tasks.filter((task) => task.id !== id))
   }
 
+  const onTaskReminder =(id) =>{
+    setTasks(
+      tasks.map((task)=> task.id===id ?{...task,reminder:!task.reminder}: task))
+  }
+const addTask=(task)=>{
+  const id= Math.floor(Math.random*10000+1)
+  const newtask={id,...task}
+  setTasks([...tasks,newtask])
+}
 
+const clickadd=()=>
+{
+  setshowAddTask(!showAddTask)
+    
+}
 
   return (
     <div className="container">
-      <Header  />
+      <Header onAdd={clickadd} />
+      {showAddTask &&<AddTask onAdd={addTask}/>}
       {tasks.length > 0 ? 
-      <Tasks tasks={tasks} onDelete={deleteTask}/>
+      <Tasks tasks={tasks} onDelete={deleteTask}
+      onReminder={onTaskReminder}/>
       : 'No Tasks Available for Today'}
     </div>
   );
