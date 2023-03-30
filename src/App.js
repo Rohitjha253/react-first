@@ -1,16 +1,15 @@
-import logo from './logo.svg';
-import React, { useState } from 'react'
 
+import React from 'react'
+import { useState } from "react"
 import './App.css';
 import Header from './components/Header';
-import Footer from './components/Footer';
-import Task from './components/Task';
+import Tasks from './components/Tasks';
+
 
 function App() {
+  const [tasks, setTasks] = useState([
 
-   const[tasks,setTasks]=useState(
-    [
-      {
+    {
         id:1,
         text: 'Yoga - Surya Namaskar',
         day: '30 March 2023 at 6:00 AM',
@@ -34,23 +33,26 @@ function App() {
         day: '30 March 2023 at 9:00 AM',
         reminder: true
     }
-    ]
-   )
+
+])
+
+  // delete task
+
+  const deleteTask = (id) => {
+    // updating the state...which excludes item whose id is passed
+      setTasks(tasks.filter((task) => task.id !== id))
+  }
+
+
 
   return (
     <div className="container">
-      <Header></Header>
-      <Task tasks={tasks}></Task>
-      <Footer></Footer>
+      <Header  />
+      {tasks.length > 0 ? 
+      <Tasks tasks={tasks} onDelete={deleteTask}/>
+      : 'No Tasks Available for Today'}
     </div>
-    
   );
 }
-
-// class App extends React.Component {
-//     render() {
-//       return <h1>Welcome from React Class</h1>
-//     }
-// }
 
 export default App;
